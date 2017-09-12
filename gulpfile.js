@@ -6,15 +6,14 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     sass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     rimraf = require('rimraf'),
     browserSync = require("browser-sync"),
-    reload = browserSync.reload;
+    reload = browserSync.reload,
     googlecdn = require('gulp-google-cdn'),
     postcss = require('gulp-postcss'),
-    gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     data = require('gulp-data'),
     stylus = require('gulp-stylus'),
@@ -22,6 +21,8 @@ var gulp = require('gulp'),
     uglifycss = require('gulp-uglifycss'),
     gcmq = require('gulp-group-css-media-queries'),
     fileinclude = require('gulp-file-include'),
+    concat = require('gulp-concat'),
+    concat1 = require('gulp-concat-js'),
     csscomb = require('gulp-csscomb');
 
 var path = {
@@ -40,7 +41,9 @@ var path = {
     },
     app: { //Пути откуда брать исходники
         html: 'app/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
-        js: 'app/js/*.js',//В стилях и скриптах нам понадобятся только main файлы
+        js: 'app/js/components/*.js',// Конкатенируем все js компоненты в один файл
+        jsd: 'app/js/',// Отправляем его в папку
+        jsm: 'app/js/*.js',//В стилях и скриптах нам понадобятся только main файлы
         styl: 'app/precss/*.styl',
         css: 'app/css/*.css',
         img: 'app/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
@@ -91,10 +94,14 @@ gulp.task('html:build', function () {
         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
 
-
+gulp.task('js:scripts', function() {
+    return gulp.src(path.app.js)
+        .pipe(concat('script.js'))
+        .pipe(gulp.dest(path.app.jsd));
+});
 
 gulp.task('js:build', function () {
-    gulp.src(path.app.js) //Найдем наш main файл
+    gulp.src(path.app.jsm) //Найдем наш main файл
         .pipe(sourcemaps.init()) //Инициализируем sourcemap
         .pipe(uglify().on('error', gutil.log))
         .pipe(uglify()) //Сожмем наш js
@@ -158,6 +165,7 @@ gulp.task('build', [
     'vendorJs:build',
     'google:fonts',
     'html:build',
+    'js:scripts',
     'js:build',
     'styl:build',
     'css:build',

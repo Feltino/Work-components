@@ -1,0 +1,17 @@
+@font-face {
+	font-family: 'Open Sans';
+	src: url('../fonts/os.eot');
+	src: url('../fonts/os.eot?#iefix') format('embedded-opentype'), url('../fonts/os.woff') format('woff'), url('../fonts/os.ttf') format('truetype'), url('../fonts/os.svg#FontName') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Open Sans Semibold';
+	src: url('../fonts/oss.eot');
+	src: url('../fonts/oss.eot?#iefix') format('embedded-opentype'), url('../fonts/oss.woff') format('woff'), url('../fonts/oss.ttf') format('truetype'), url('../fonts/oss.svg#FontName') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvX3R5cG9ncmFwaHkuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQVksWUFBWjtFQUNBLEtBQXlCLHVCQUF6QjtFQUNBLEtBQTZELDRMQUE3RDtFQUNBLFlBQVcsT0FBWDtFQUNBLGFBQVksT0FBWjs7QUFFRjtFQUNFLGFBQVkscUJBQVo7RUFDQSxLQUEwQix3QkFBMUI7RUFDQSxLQUE4RCxnTUFBOUQ7RUFDQSxZQUFXLE9BQVg7RUFDQSxhQUFZLE9BQVoiLCJmaWxlIjoic3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbXX0= */
